@@ -49,11 +49,18 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_record-events (4.0.0)
+      activerecord (>= 4.0)
+      verbs (~> 2.2)
     activejob (6.1.2.1)
       activesupport (= 6.1.2.1)
       globalid (>= 0.3.6)
     activemodel (6.1.2.1)
       activesupport (= 6.1.2.1)
+    activemodel-serializers-xml (1.0.2)
+      activemodel (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (6.1.2.1)
       activemodel (= 6.1.2.1)
       activesupport (= 6.1.2.1)
@@ -98,6 +105,12 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
+    draper (4.0.1)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
+      activemodel-serializers-xml (>= 1.0)
+      activesupport (>= 5.0)
+      request_store (>= 1.0)
     erubi (1.10.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
@@ -198,6 +211,8 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.0.3)
+    request_store (1.5.0)
+      rack (>= 1.4)
     rexml (3.2.4)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
@@ -255,6 +270,9 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.0.0)
+    verbs (2.3.1)
+      activesupport (>= 2.3.4)
+      i18n
     web-console (4.1.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -277,11 +295,13 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  active_record-events (~> 4.0)
   bootsnap (>= 1.4.4)
   byebug
   capybara
   capybara-screenshot
   dotenv-rails
+  draper
   factory_bot_rails
   image_processing (~> 1.2)
   jbuilder (~> 2.7)

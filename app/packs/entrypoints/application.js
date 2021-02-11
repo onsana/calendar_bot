@@ -17,6 +17,8 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 
+require("trix")
+require("@rails/actiontext")
 require("alpinejs")
 
 import "./application.scss"

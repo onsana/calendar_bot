@@ -45,3 +45,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers", require: false # Easy installation and use of web drivers to run system tests with browsers;
 end
+
+gem "active_record-events", "~> 4.0"
+gem 'draper'
