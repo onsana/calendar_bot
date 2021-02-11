@@ -37,6 +37,13 @@ module FemCalendarBot
     config.generators do |g|
       g.assets false
       g.helper false
+      g.controller_specs false
+      g.factory_bot true
+      g.fixture_replacement :factory_bot, dir: "spec/factories"
+      g.helper_specs false
+      g.system_tests false
+      g.view_specs false
+      g.test_framework :rspec
     end
   end
 end
