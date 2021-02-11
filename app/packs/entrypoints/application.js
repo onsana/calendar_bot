@@ -16,6 +16,9 @@
 
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
+
+require("alpinejs")
+
 import "./application.scss"
 
 console.log('Hello World from Webpacker')
