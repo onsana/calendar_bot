@@ -16,5 +16,6 @@
 
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
+import "./application.scss"
 
 console.log('Hello World from Webpacker')
