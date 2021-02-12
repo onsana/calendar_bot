@@ -1,0 +1,28 @@
+<!-- component -->
+<%= form_with(model: [:admin, event], local: true) do |form| %>
+  <div class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
+    <%= form.text_field :title, class: "title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", placeholder: "Title" %>
+    
+    <%= form.rich_text_area :content, class: "description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", placeholder: "Describe everything about this event here" %>
+    <%= form.date_field :started_at, class: "title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" %>
+    <p class="font-bold text-sm mt-3">Without year</p>
+    <div class="flex items-baseline space-x-2 mt-2">
+      <%#= form.check_box :without_year, class: "inline-block" %>
+      <p class="text-gray-600 text-sm">I consent to having this website store my submitted information so they can respond to my inquiry.</p>
+    </div>
+
+    <!-- icons -->
+    <div class="icons flex text-gray-500 m-2">
+
+    </div>
+    <!-- buttons -->
+    <div class="buttons flex">
+      <%= link_to 'Cancel', admin_events_path, class: "btn border border-gray-300 py-3 px-10 rounded font-semibold cursor-pointer text-gray-500 ml-auto" %>
+      <%= form.submit class: "btn border border-indigo-600 py-3 px-10 rounded font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-600 hover:bg-indigo-700" %>
+    </div>
+  </div>
+<% end %>
+
+
+
+  

@@ -1,0 +1,19 @@
+<div class="container mx-auto mt-10">
+  <%= month_calendar do |date| %>
+    <div class="top h-5 w-full">
+      <span class="text-gray-500"><%= date.day %></span>
+    </div>
+    <% @events.each do |event| %>
+      <% if date.yday == event.eventday %>
+        <div class="bottom flex-grow h-30 py-1 w-full cursor-pointer">
+          <div class="event bg-purple-400 text-white rounded p-1 text-sm mb-1">
+            <span class="event-name">
+              <%= event.title %>
+            </span>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+

@@ -22,5 +22,6 @@ require("@rails/actiontext")
 require("alpinejs")
 
 import "./application.scss"
+import "@fortawesome/fontawesome-free/js/all"
 
 console.log('Hello World from Webpacker')

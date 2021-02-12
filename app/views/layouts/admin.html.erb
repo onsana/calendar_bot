@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FemCalendarBot</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+  <div>
+    <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200">
+      <%= render partial: "admin/shared/sidebar" %>
+      <div class="flex-1 flex flex-col overflow-hidden">
+        <%= render partial: "admin/shared/header" %>
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+          <div class="container mx-auto px-6 py-8">
+            <%= yield %>
+          </div>
+        </main>
+      </div>
+    </div>
+    </div>
+  </body>
+</html>
