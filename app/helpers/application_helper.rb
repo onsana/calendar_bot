@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+  
   def default_meta_tags
     # TODO: change favicon
     img = image_url("logo-large.png")

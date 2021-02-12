@@ -15,7 +15,7 @@
                         >
                           Approved
                         </span> %>
-                        <%= event.publication_icon_status %>
+                        <%= event.decorate.publication_icon_status %>
                       </td>
                       <td class="px-4 py-3 text-sm">
                         <%= l(event.started_at.to_date, format: :long) %>

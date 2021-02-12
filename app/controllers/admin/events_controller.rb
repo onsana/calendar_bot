@@ -4,12 +4,12 @@ class Admin::EventsController < Admin::BaseController
   before_action :set_event, only: [:show, :toggle_publish, :edit, :update, :destroy]
 
   def index
-    # @events = Event.order(:eventday)
-    @events = EventDecorator.decorate_collection(Event.order(:eventday))
+    # @events = EventDecorator.decorate_collection(Event.order(:eventday))
+    # @pagy, @events = pagy(EventDecorator.decorate_collection(Event.order(:eventday)))
+    @pagy, @events = pagy(Event.order(:eventday))
   end
 
   def calendar
-    # @events = Event.order(:eventday)
     start_date = params.fetch(:start_date, Date.today).to_date
     @events = Event.month_events(start_date)
   end
@@ -76,6 +76,6 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def event_params
-    params.require(:event).permit(:title, :content, :started_at, :published_at, :without_year, :body)
+    params.require(:event).permit(:title, :content, :started_at, :published_at)
   end
 end
