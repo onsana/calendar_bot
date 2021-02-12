@@ -1,7 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Event.destroy_all
+
+150.times do
+  Event.create!(
+      started_at: Faker::Date.between(from: 200.year.ago, to: '2021-02-25'),
+      title: Faker::Quotes::Shakespeare.hamlet_quote,
+      content: "Anniversary of the death of a famous or not so famous dude named #{Faker::TvShows::GameOfThrones.character}, who died that day #{rand(200)} years ago.",
+  )
+end

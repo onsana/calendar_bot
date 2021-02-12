@@ -24,7 +24,6 @@ group :development, :test do
   gem "standard"
   gem "factory_bot_rails"
   gem "rspec-rails"
-  gem 'faker'
   gem 'awesome_print'
 end
 
@@ -46,3 +45,4 @@ gem "active_record-events", "~> 4.0"
 gem 'draper'
 gem "simple_calendar"
 gem 'rails-i18n'
+gem 'faker'
