@@ -17,9 +17,11 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 
+require("controllers")
 require("trix")
 require("@rails/actiontext")
 require("alpinejs")
+require('typeface-inter')
 
 import "./application.scss"
 import "@fortawesome/fontawesome-free/js/all"
