@@ -1,14 +1,16 @@
 <div class="container mx-auto mt-10">
   <%= month_calendar do |date| %>
     <div class="top h-5 w-full">
-      <span class="text-gray-500"><%= date.day %></span>
+      <span class="text-gray-500">
+         <%= link_to date.day, request.params.merge(start_date: date) %>
+      </span>
     </div>
     <% @events.each do |event| %>
       <% if date.yday == event.eventday %>
         <div class="bottom flex-grow h-30 py-1 w-full cursor-pointer">
           <div class="event bg-purple-400 text-white rounded p-1 text-sm mb-1">
             <span class="event-name">
-              <%= event.title %>
+              <%= link_to event.title, admin_event_path(event) %>
             </span>
           </div>
         </div>
@@ -17,3 +19,15 @@
   <% end %>
 </div>
 
+
+<div class="container mx-auto mt-10">
+  <%= month_calendar(partial: 'admin/events/mini_calendar') do |date| %>
+    <span class="text-gray-500">
+        <%= link_to date.day, request.params.merge(start_date: date) %>
+    </span>
+    <% @events.each do |event| %>
+      <% if date.yday == event.eventday %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

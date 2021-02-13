@@ -1,0 +1,51 @@
+<div class="simple-calendar">
+  <div class="bg-white mt-12 rounded-lg shadow p-4" style="width: 17rem" >
+
+    <div class="flex justify-between items-center mb-2">
+      <div>
+        <span  class="text-lg font-bold text-gray-800"><%= t('date.month_names')[start_date.month] %> </span>
+        <span class="ml-1 text-lg text-gray-600 font-normal"><%= start_date.year %></span>
+      </div>
+      <div>
+        <%= link_to calendar.url_for_previous_view, class: "leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center" do %>
+            <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+        <% end %>
+        <%= link_to calendar.url_for_next_view, class: "leading-none rounded-lg transition ease-in-out duration-100 inline-flex items-center cursor-pointer hover:bg-gray-200 p-1" do %>
+            <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+        <% end %>
+      </div>
+    </div>
+
+    <table class="">
+        <thead class="flex flex-wrap mb-3 -mx-1">
+          <tr class="text-center flex w-full">
+            <% date_range.slice(0, 7).each do |day| %>
+              <th class="px-1 w-1/7">
+                <div class="text-gray-800 font-medium text-center text-xs">
+                  <%= t('date.abbr_day_names')[day.wday] %>
+                </div>
+              </th>
+            <% end %>
+          </tr>
+        </thead>
+      <tbody class="flex flex-wrap -mx-1">
+        <% date_range.each_slice(7) do |week| %>
+          <tr class="text-center flex w-full">
+            <% week.each do |day| %>
+            <% cl = %w(px-1 mb-1 w-1/7) %>
+              <%= content_tag :td, class: calendar.td_classes_for(day).concat(cl) do %>
+                <div class="hover:bg-purple-300 hover:text-white cursor-pointer text-center text-sm rounded-full leading-loose transition ease-in-out duration-100">
+                    <% passed_block.call day, sorted_events.fetch(day, []) %>
+                </div>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
