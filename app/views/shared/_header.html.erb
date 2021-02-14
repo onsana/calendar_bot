@@ -12,10 +12,10 @@
             <div class="flex justify-center">
           <div class="text-center p-2">
               <div class="text-lg text-grey-light">
-                  <span class="text-center text-5xl text-gray-700 mx-6  font-thin">2021</span>
+                  <span class="text-center text-5xl text-gray-700 mx-6  font-thin"> <%= @start_date.year %></span>
                 </div>
               <div class="text-gray-700 tracking-wide">
-                Saturday | 30 Dec
+                 <%= t('date.day_names')[@start_date.wday] %> | <%= @start_date.day %> <%= t('date.month_names')[@start_date.month] %>
               </div>
             </div>
         </div>

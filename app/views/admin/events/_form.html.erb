@@ -1,121 +1,33 @@
 <!-- component -->
+
+<!-- component -->
 <%= form_with(model: [:admin, event], local: true) do |form| %>
-  <div class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
-    <%= form.text_field :title, class: "title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none", placeholder: "Title" %>
-    <%= form.text_field :title, class: "block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input", placeholder: "Title" %>
-    
-    <%= form.rich_text_area :content, class: "description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none", placeholder: "Describe everything about this event here" %>
-    <%= form.date_field :started_at, class: "title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" %>
-    <p class="font-bold text-sm mt-3">Without year</p>
-    <div class="flex items-baseline space-x-2 mt-2">
-      <%#= form.check_box :without_year, class: "inline-block" %>
-      <p class="text-gray-600 text-sm">I consent to having this website store my submitted information so they can respond to my inquiry.</p>
+  <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+    <label class="block text-sm">
+      <span class="text-gray-700 dark:text-gray-400">Title</span>
+      <%= form.text_field :title, class: "block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input", placeholder: "Title" %>            
+    </label>
+    <div class="block mt-6 text-sm">
+      <span class="text-gray-700 dark:text-gray-400">Content</span>
+      <%= form.rich_text_area :content, class: "block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray", placeholder: "Describe everything about this event here" %>                
     </div>
-
-    <!-- icons -->
-    <div class="icons flex text-gray-500 m-2">
-
+    <label class="block text-sm">
+      <span class="text-gray-700 dark:text-gray-400">Date</span>
+      <%= form.date_field :started_at, class: "block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input", placeholder: "Title" %>            
+    </label>
+    <div class="flex mt-6 text-sm">
+      <label class="flex items-center dark:text-gray-400">
+        <input type="checkbox" class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" />
+        <span class="ml-2">
+          I agree to the
+          <span class="underline">privacy policy</span>
+        </span>
+      </label>
     </div>
-    <!-- buttons -->
+        <!-- buttons -->
     <div class="buttons flex">
       <%= link_to 'Cancel', admin_events_path, class: "btn border border-gray-300 py-3 px-10 rounded font-semibold cursor-pointer text-gray-500 ml-auto" %>
       <%= form.submit class: "btn border border-indigo-600 py-3 px-10 rounded font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-600 hover:bg-indigo-700" %>
     </div>
   </div>
 <% end %>
-
-
-
-  <div
-              class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
-            >
-              <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Name</span>
-                <input
-                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                  placeholder="Jane Doe"
-                />
-              </label>
-
-              <div class="mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">
-                  Account Type
-                </span>
-                <div class="mt-2">
-                  <label
-                    class="inline-flex items-center text-gray-600 dark:text-gray-400"
-                  >
-                    <input
-                      type="radio"
-                      class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                      name="accountType"
-                      value="personal"
-                    />
-                    <span class="ml-2">Personal</span>
-                  </label>
-                  <label
-                    class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400"
-                  >
-                    <input
-                      type="radio"
-                      class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                      name="accountType"
-                      value="busines"
-                    />
-                    <span class="ml-2">Business</span>
-                  </label>
-                </div>
-              </div>
-
-              <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">
-                  Requested Limit
-                </span>
-                <select
-                  class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                >
-                  <option>$1,000</option>
-                  <option>$5,000</option>
-                  <option>$10,000</option>
-                  <option>$25,000</option>
-                </select>
-              </label>
-
-              <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">
-                  Multiselect
-                </span>
-                <select
-                  class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-multiselect focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                  multiple
-                >
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                  <option>Option 4</option>
-                  <option>Option 5</option>
-                </select>
-              </label>
-
-              <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Message</span>
-                <textarea
-                  class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                  rows="3"
-                  placeholder="Enter some long form content."
-                ></textarea>
-              </label>
-
-              <div class="flex mt-6 text-sm">
-                <label class="flex items-center dark:text-gray-400">
-                  <input
-                    type="checkbox"
-                    class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                  />
-                  <span class="ml-2">
-                    I agree to the
-                    <span class="underline">privacy policy</span>
-                  </span>
-                </label>
-              </div>
-            </div>

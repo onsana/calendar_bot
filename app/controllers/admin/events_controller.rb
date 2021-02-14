@@ -4,8 +4,7 @@ class Admin::EventsController < Admin::BaseController
   before_action :set_event, only: [:show, :toggle_publish, :edit, :update, :destroy]
 
   def index
-    # @events = EventDecorator.decorate_collection(Event.order(:eventday))
-    # @pagy, @events = pagy(EventDecorator.decorate_collection(Event.order(:eventday)))
+    # @events = EventDecorator.decorate_collection(Event.order(:eventday)))
     @pagy, @events = pagy(Event.order(:eventday))
   end
 

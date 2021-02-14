@@ -18,10 +18,20 @@ import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 
 require("controllers")
+require("trix")
+require("@rails/actiontext")
 require("alpinejs")
 require('typeface-inter')
 
-import "./application.scss"
+import "./admin.scss"
 import "@fortawesome/fontawesome-free/js/all"
 
-console.log('Hello World from Webpacker')
+console.log('Hello World from Admin Webpacker')
+import Rails from "@rails/ujs"
+import Turbolinks from "turbolinks"
+import * as ActiveStorage from "@rails/activestorage"
+require("channels");
+
+Rails.start()
+Turbolinks.start()
+ActiveStorage.start()
