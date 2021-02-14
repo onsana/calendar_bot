@@ -1,6 +1,6 @@
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
-
+import ReadMore from "stimulus-read-more"
 const application = Application.start(document.documentElement)
 const context = require.context('.', true, /_controller\.js$/)
 application.load(definitionsFromContext(context))
@@ -12,6 +12,8 @@ application.register('tabs', Tabs)
 application.register('popover', Popover)
 application.register('toggle', Toggle)
 application.register('slideover', Slideover)
+
+application.register("read-more", ReadMore)
 
 // import Flatpickr
 import Flatpickr from 'stimulus-flatpickr'

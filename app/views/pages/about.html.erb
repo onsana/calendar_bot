@@ -8,7 +8,18 @@
       <!-- Calendar -->
       <div class="bg-white p-3 border-t-4 border-deep-purple-accent-700">
         <!-- Calendar Icon -->
-        <%= render partial: "shared/calendar_day" %>
+        <%#= render partial: "shared/calendar_day" %>
+        <div class="container mx-auto mt-10">
+          <%= month_calendar(partial: 'admin/events/mini_calendar') do |date| %>
+            <span class="text-gray-500">
+                <%= link_to date.day, request.params.merge(start_date: date) %>
+            </span>
+            <% @events.each do |event| %>
+              <% if date.yday == event.eventday %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
           <!-- End of calendar -->
       <div class="my-4"></div>

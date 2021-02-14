@@ -1,76 +1,127 @@
 <%= render partial: "shared/header" %>
-
 <!-- component -->
-<div class="container mx-auto px-4">
-<!-- component -->
-<div class="lg:flex">
 
-<!-- Calendar Icon -->
-<%= render partial: "shared/calendar_day" %>
-
-<div class="relative w-1/2 m-8">
-  <div class="border-r-2 border-gray-200 border-dotted absolute h-full top-0 z-0" style="left: 7px"></div>
-    <ul class="list-none m-0 p-0">
-      <% @events.each do |event| %>
-        <li class="mb-2">
-          <div class="flex items-center mb-1">
-              <div class="bg-indigo-600 rounded-full h-4 w-4 border-gray-200 border-2 z-10">
-              </div>
-          </div>
-<!-- component -->
-          <div class="grid mx-10">
-
-            <!-- Question Listing Item Card -->
-            <div class="bg-white rounded-lg shadow-sm hover:shadow-lg duration-500 px-2 sm:px-6 md:px-2 py-4 my-6">
-              <div class="grid grid-cols-12 gap-3">
+<div class="container mx-auto my-5 p-5">
+  <div class="md:flex no-wrap md:-mx-2 ">
+        <!-- Left Side -->
+    <div class="w-full md:w-3/12 md:mx-2">
+      <!-- Calendar -->
+      <div class="bg-white p-3 border-t-4 border-deep-purple-accent-700">
+        <!-- Calendar Icon -->
+        <%#= render partial: "shared/calendar_day" %>
+        <div class="container mx-auto mt-10">
+          <%= month_calendar(partial: 'admin/events/mini_calendar') do |date| %>
+            <span class="text-gray-500">
+                <%= link_to date.day, request.params.merge(start_date: date) %>
+            </span>
+            <% @events.each do |event| %>
+              <% if date.yday == event.eventday %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+          <!-- End of calendar -->
+      <div class="my-4"></div>
+    </div>
+    <!-- Right Side -->
+    <div class="w-full md:w-9/12 mx-2">
+      <!-- Event Section -->
+      <div class="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+        <div class="mb-10 border-t border-b divide-y">
+          <% @events.each do |event| %>
+            <div class="grid py-8 sm:grid-cols-4">
+              <div class="mb-4 sm:mb-0">
                 <!-- Meta Column -->
                 <div class="col-span-0 sm:col-span-2 text-center hidden sm:block">
-                  <!-- Vote Counts -->
-                  <div class="grid grid-rows-2"></div>
-
-                  <!-- Answer Counts -->
-                  <a href="#" class="grid grid-rows-2 mx-auto mb-3 py-1 w-4/5 2lg:w-3/5 rounded-md bg-indigo-400">
+                
+                  <div class="grid grid-rows-2 mx-auto mb-3 py-1 w-3/5 2lg:w-3/5 rounded-md bg-deep-purple-accent-700">
                     <div class="inline-block font-medium text-2xl text-white">
                       <%= event.started_at.year %>
                     </div>
-                  </a>
-                  <!-- View Counts -->
-                  <div class="grid my-3"></div>
-                </div>
-
-                <!-- Summary Column -->
-                <div class="col-span-12 sm:col-start-3 sm:col-end-13 px-3 sm:px-0">
-                  <div class="grid sm:hidden">
-                      <div class="flex flex-wrap">
-                          <div class="mr-2"></div>
-                          <div class="mr-2">
-                              <div class="inline-block font-light capitalize">
-                                  <i class="uil uil-check-circle mr-1"></i>
-                                  <span class="text-sm">
-                                      21 Answers
-                                  </span>
-                              </div>
-                          </div>
-                          <div class="mr-2"></div>
-                      </div>
-                    </div>
-
-
-                <div class="mt-2">
-                  <a href="#" class="sm:text-sm md:text-md lg:text-lg text-gray-700 font-bold hover:underline">
-                      <%= event.title %>
-                  </a>
-
-                  <p class="mt-2 text-gray-600 text-sm md:text-md">
-                    <%= event.content %>
-                  </p>
+                  </div>
+  
                 </div>
               </div>
-          </div>
-      </div>
+              <div class="sm:col-span-3 lg:col-span-2">
+                <div class="mb-3">
+                  <div class="inline-block text-black transition-colors duration-200 hover:text-deep-purple-accent-700">
+                    <p class="text-3xl font-extrabold leading-none sm:text-4xl xl:text-4xl">
+                      <%= event.title %>
+                    </p>
+                  </div>
+                </div>
+                <p class="text-gray-700">
+                  <div
+                    data-controller="read-more"
+                    data-read-more-more-text-value="Read more"
+                    data-read-more-less-text-value="Read less"
+                  >
+                    <p class="text-gray-700" data-read-more-target="content"><%= truncate(strip_tags(event.content.to_s), length: 100) %></p>
 
-        </li>
-      <% end %>
-    </ul>
+                    <button class="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800" data-action="read-more#toggle">
+                      Read more
+                    </button>
+
+                    <template data-read-more-target="full">
+                      <%= event.content %>
+                    </template>
+                  </div>
+                </p>
+              </div>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+                   
+      <!-- End of event section -->
+      <div class="my-4"></div>
+    </div>
   </div>
 </div>
+<!-- component -->
+<div class="container mx-auto my-5 p-5">
+	<div class="w-full mx-auto">
+		<div class="sm:grid grid-cols-4 gap-5 mx-auto px-16">
+
+			<div class="col-start-1 col-end-3 my-2">
+
+        <%= link_to request.params.merge(start_date: @start_date - 1), class: "hover:text-deep-purple-800" do %>
+          <div class="h-full p-6 dark:bg-gray-800 bg-white hover:shadow-xl rounded border-b-4 border-deep-purple-accent-700 shadow-md">
+            <h3 class="text-2xl mb-3 font-semibold inline-flex">
+              <svg class="mr-2" width="24" height="30" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M1.02698 11.9929L5.26242 16.2426L6.67902 14.8308L4.85766 13.0033L22.9731 13.0012L22.9728 11.0012L4.85309 11.0033L6.6886 9.17398L5.27677 7.75739L1.02698 11.9929Z"
+                  fill="currentColor" /></svg>
+              Prev Day
+            </h3>
+           <p class="text-lg"><%= @start_date - 1 %></p>
+          </div>
+        <% end %>
+
+			</div>
+
+			<div class="col-end-5 col-span-2 my-2">
+
+        <%= link_to request.params.merge(start_date: @start_date + 1), class: "hover:text-deep-purple-800"  do %>
+          <div
+            class="h-full p-6 dark:bg-gray-800 bg-white hover:shadow-xl rounded border-b-4 border-deep-purple-accent-700 shadow-md text-right">
+            <h3 class="text-2xl mb-3 font-semibold inline-flex ">
+              Next Day
+              <svg class="ml-2" width="24" height="30" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M23.0677 11.9929L18.818 7.75739L17.4061 9.17398L19.2415 11.0032L0.932469 11.0012L0.932251 13.0012L19.2369 13.0032L17.4155 14.8308L18.8321 16.2426L23.0677 11.9929Z"
+                  fill="currentColor" /></svg>
+            </h3>
+            <p class="text-lg"><%= @start_date + 1 %></p>
+          </div>
+        <% end %>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- component -->
