@@ -10,6 +10,11 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
   namespace :admin do
+    resources :users do
+      member do
+        get 'toggle_admin'
+      end
+    end
     resources :events do
       member do
         get 'toggle_publish'
