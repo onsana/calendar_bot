@@ -47,5 +47,5 @@ gem "simple_calendar"
 gem 'rails-i18n'
 gem 'faker'
 gem "meta-tags", "~> 2.14"
-
+gem 'devise'
 gem "pagy", "~> 3.10"
