@@ -21,16 +21,18 @@ Bundler.require(*Rails.groups)
 
 module FemCalendarBot
   class Application < Rails::Application
+    config.active_job.queue_adapter = :sidekiq
+    config.application_name = Rails.application.class.module_parent_name 
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = "Kyiv"
+    config.active_record.default_timezone = :local
+    config.active_record.time_zone_aware_attributes = false
     # config.eager_load_paths << Rails.root.join("extras")
+    config.i18n.available_locales = [:en, :uk]
+    config.i18n.default_locale = :uk
+    config.i18n.fallbacks = true
 
     # Don't generate system test files.
     config.generators.system_tests = nil
