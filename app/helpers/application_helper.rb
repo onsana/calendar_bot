@@ -11,14 +11,14 @@ module ApplicationHelper
         )
       end
     end
-  end 
-  
+  end
+
   def default_meta_tags
     # TODO: change favicon
     img = image_url("logo-large.png")
     {
       title: "TODO",
-      site: "#{Rails.application.class.name.split('::').first}",
+      site: Rails.application.class.name.split("::").first.to_s,
       reverse: true,
       description: "TODO",
       keywords: "TODO",
@@ -27,12 +27,12 @@ module ApplicationHelper
       image_src: img,
       og: {
         title: :title,
-        type: 'website',
+        type: "website",
         url: request.url,
         image: :image,
         description: :description
       },
-      twitter: { image: :image_src }
+      twitter: {image: :image_src}
     }
   end
 end

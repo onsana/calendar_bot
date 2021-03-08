@@ -1,6 +1,6 @@
 class Admin::BaseController < ApplicationController
   before_action :authenticate_user!
-  layout "admin" 
+  layout "admin"
   before_action :ensure_admin!
 
   private
@@ -11,7 +11,7 @@ class Admin::BaseController < ApplicationController
 
       redirect_to root_path
 
-      return false
+      false
     end
   end
 end

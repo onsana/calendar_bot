@@ -24,7 +24,7 @@ group :development, :test do
   gem "standard"
   gem "factory_bot_rails"
   gem "rspec-rails"
-  gem 'awesome_print'
+  gem "awesome_print"
 end
 
 group :development do
@@ -32,6 +32,7 @@ group :development do
   gem "rack-mini-profiler", "~> 2.0"
   gem "listen", "~> 3.3"
   gem "letter_opener" # Opens emails in new tab for easier testing
+  gem "brakeman"
 end
 
 group :test do
@@ -42,12 +43,12 @@ group :test do
 end
 
 gem "active_record-events", "~> 4.0"
-gem 'draper'
+gem "draper"
 gem "simple_calendar"
-gem 'rails-i18n'
-gem 'faker'
+gem "rails-i18n"
+gem "faker"
 gem "meta-tags", "~> 2.14"
-gem 'devise'
+gem "devise"
 gem "pagy", "~> 3.10"
 
 gem "sidekiq", "~> 6.1"
