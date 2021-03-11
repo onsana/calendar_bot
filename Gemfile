@@ -49,6 +49,7 @@ gem "rails-i18n"
 gem "faker"
 gem "meta-tags", "~> 2.14"
 gem "devise"
+gem "devise-i18n"
 gem "pagy", "~> 3.10"
 
 gem "sidekiq", "~> 6.1"

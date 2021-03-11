@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   has_event :publish
   has_rich_text :content
+  validates :title, presence: true
 
   before_save :set_event_day, if: :new_record?
 
