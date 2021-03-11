@@ -5,7 +5,7 @@ FactoryBot.define do
     password { Faker::Internet.password }
   end
 
-  factory :admin, class: 'User' do
+  factory :admin, class: "User" do
     name { "Admin" }
     email { "test@admin.com" }
     password { "qwerty" }
