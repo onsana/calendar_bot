@@ -1,0 +1,11 @@
+{
+  "name": "fembot",
+  "description": "Telegram fem bot",
+  "keywords": [
+  ],
+  "scripts": {
+    "dokku": {
+      "postdeploy": "bundle exec rake db:migrate"
+    }
+  }
+}
